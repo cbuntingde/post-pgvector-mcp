@@ -20,7 +20,8 @@
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
     "setup": "tsx src/setup.ts",
-    "postinstall": "node dist/setup.js || echo 'Run npm run setup to configure Postgres connection'"
+    "postinstall": "node dist/setup.js || echo 'Run npm run setup to configure Postgres connection'",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",
