@@ -3,11 +3,11 @@
 > [!IMPORTANT]
 > **Prerequisites for Use**
 > 
-> To ensure efficient operation and connectivity with Supabase, please verify the following:
+> To ensure efficient operation and connectivity with Postgres, please verify the following:
 >
 > 1. **Rule Configuration**: You **must** add the defined operational rules to your editor or extension's system prompt (e.g., `.clinerules`). See [System Prompts](#2-system-prompts-clinerules).
 > 2. **MCP Configuration**: The `mcp.json` file must be strictly configured as detailed in the [MCP Client Configuration](#mcp-client-configuration) section.
-> 3. **Tool Authorization**: For users of **Cline**, **Roo Code**, **Kilo Code**, or similar extensions: You **must enable all tool permissions** (check all boxes) upon initialization. Failure to approve these tools will prevent the server from authenticating and connecting to the Supabase instance.
+> 3. **Tool Authorization**: For users of **Cline**, **Roo Code**, **Kilo Code**, or similar extensions: You **must enable all tool permissions** (check all boxes) upon initialization. Failure to approve these tools will prevent the server from authenticating and connecting to the Postgres instance.
 
 An MCP server that provides semantic memory storage using a local PostgreSQL database with the `pgvector` extension. This enables your AI assistant to store, retrieve, and search memories using vector embeddings.
 
