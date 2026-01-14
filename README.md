@@ -18,7 +18,10 @@ An MCP server that provides semantic memory storage using a local PostgreSQL dat
 
 ### 1. Start Postgres with pgvector
 
-You can use the provided `docker-compose.yml` in the `../post-pgvector-docker` directory (or create one):
+This server is designed to work with the Docker container provided in the following repository, which includes Postgres configured with the `pgvector` extension:
+[https://github.com/cbuntingde/post-pgvector-docker](https://github.com/cbuntingde/post-pgvector-docker)
+
+You can use the `docker-compose.yml` from that repository (or create one like below):
 
 ```yaml
 services:
