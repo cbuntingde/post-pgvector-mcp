@@ -1,0 +1,54 @@
+{
+  "name": "postgres-pgvector-memory-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for semantic memory storage using local Postgres with pgvector",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "postgres-memory": "dist/index.js",
+    "postgres-memory-setup": "dist/setup.js"
+  },
+  "files": [
+    "dist",
+    "schema.sql",
+    "README.md",
+    ".clinerules",
+    "mcp.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "setup": "tsx src/setup.ts",
+    "postinstall": "node dist/setup.js || echo 'Run npm run setup to configure Postgres connection'"
+  },
+  "keywords": [
+    "mcp",
+    "postgres",
+    "pgvector",
+    "memory",
+    "semantic-search",
+    "embeddings",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@types/pg": "^8.16.0",
+    "@xenova/transformers": "^2.17.2",
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.12",
+    "pg": "^8.17.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "@types/node": "^20.10.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

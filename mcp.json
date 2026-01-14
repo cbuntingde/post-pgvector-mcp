@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "postgres-memory": {
+      "command": "node",
+      "args": [
+        "c:\\mcpservers\\post-pgvector-mcp\\dist\\index.js"
+      ],
+      "env": {
+        "POSTGRES_URL": "postgresql://postgres:password@localhost:5432/postgres"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

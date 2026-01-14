@@ -1,0 +1,62 @@
+# Autonomous Memory Management Rules for Supabase Memory MCP Server
+
+You are equipped with a Supabase + pgvector memory system via MCP. You must manage this memory automatically to maintain long-term project awareness.
+
+## Phase 1: Context Retrieval (Session Start)
+
+- **BEFORE** starting any task, you MUST call `search_memories` using the current project path and task description as the query.
+- Proactively look for:
+  1. Past architectural decisions
+  2. Specific tech stack quirks or "gotchas"
+  3. Documentation for local modules you've built previously
+  4. Previous errors and their solutions
+  5. User preferences and coding style
+- Integrate these findings into your initial plan before asking for user approval.
+
+## Phase 2: In-Task Updates
+
+- If the user makes a major pivot or a new technical standard is established (e.g., "We are switching from Fetch to Axios"), immediately call `store_memory` to log this change.
+- Store memories with appropriate categories:
+  - `tech_stack` - Libraries, frameworks, versions
+  - `decision` - Architectural or design decisions
+  - `snippet` - Useful code patterns or solutions
+  - `architecture` - System structure and patterns
+  - `gotcha` - Known issues and workarounds
+  - `preference` - User preferences and style
+
+## Phase 3: Task Conclusion (Automatic Upsert)
+
+- Whenever a task is marked "Complete," you MUST call `store_memory` with a concise summary.
+- Format the summary as follows:
+  - **Outcome**: What was built or fixed.
+  - **Decisions**: Key logic choices made (and why).
+  - **Tech Stack**: Updated list of libraries or patterns used.
+- Ensure the metadata includes relevant context.
+
+## Phase 4: Project Statistics
+
+- Periodically use `get_project_stats` to understand the memory landscape
+- Use this to identify gaps in documentation or areas needing memory cleanup
+
+## Constraints
+
+- **Never** ask the user "Should I save this to the database?"—just do it as part of your cleanup routine.
+- Use **semantic search** to find relevant context; do not rely on exact keyword matches.
+- Keep memory content **concise** but **comprehensive** enough to be useful later.
+- Use **project_id** consistently to maintain proper memory isolation.
+
+## Example Workflow
+
+```
+1. User: "Add authentication to the app"
+
+2. You: [Call search_memories with query="authentication auth login session user management" project_id="current-project"]
+
+3. Review results for previous auth decisions, preferred libraries, etc.
+
+4. Implement authentication...
+
+5. You: [Call store_memory with content="Implemented JWT authentication using jose library. Tokens expire after 24h. Refresh tokens stored in httpOnly cookies.", category="decision", project_id="current-project"]
+
+6. Complete task and report to user
+```
